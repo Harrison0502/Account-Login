@@ -1,0 +1,43 @@
+const User = require('../user')
+const db = require('../../config/mongoose')
+const users = [
+  {
+    firstName: 'Tony',
+    email: 'tony@stark.com',
+    password: 'iamironman'
+  },
+  {
+    firstName: 'Steve',
+    email: 'captain@hotmail.com',
+    password: 'icandothisallday'
+  },
+  {
+    firstName: 'Peter',
+    email: 'peter@parker.com',
+    password: 'enajyram'
+  },
+  {
+    firstName: 'Natasha',
+    email: 'natasha@gamil.com',
+    password: '*parol#@$!'
+  },
+  {
+    firstName: 'Nick',
+    email: 'nick@shield.com',
+    password: 'password'
+  }
+]
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+
+
+// 連線成功
+db.once('open', () => {
+  console.log('mongodb connected!')
+  return User.insertMany(users)
+    .then(() => console.log('done!'))
+    .catch(error => console.log(error))
+})
