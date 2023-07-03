@@ -1,3 +1,6 @@
 <div class="container mt-2 text-center">
-  <h1 class="mt-5">Welcome back,{{name}}!</h1>
+  {{#if login}}<h1 class="mt-5">You have logged in, welcome back,{{name}}!</h1>
+  {{else}}<h1 class="mt-5">Welcome back,{{name}}!</h1>
+  {{/if}}
+  <a href="/logout" class="btn btn-warning mt-5">Log Out</a>
 </div>
